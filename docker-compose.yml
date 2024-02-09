@@ -1,0 +1,11 @@
+version: '2'
+services:
+  s1:
+#    To push on docker hub must initialize image arg
+    image: ahmedibrahim226/dj-app
+    container_name: dj-app-container
+    ports:
+      - "8000:8000"
+
+  db:
+    container_name: dj-app-db-container

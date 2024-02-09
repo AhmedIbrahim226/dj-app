@@ -1,0 +1,68 @@
+version: '2'
+services:
+  s1:
+    build:
+      context: .
+      # Define Dockerfile stages
+      target: development
+      # Define args to used in Dockerfile
+      args:
+        - DOCKERIZE_TYPE=development
+    volumes:
+#      - ./users:/dj-app/users:ro
+      - ./templates:/dj-app/templates:ro
+    environment: # OR 
+      - KEY=VAL from docker
+      - KEY1=VAL1 from docker
+      - KEY2=VAL2 from docker
+      - CASE=development
+      - DB_USER=ahmed
+      - DB_PASS=123456789
+      - DB_NAME=djappdb
+      - PSQL_HOST=psql-db
+#    env_file:
+#      - ./.env
+#    command: python3 manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+      - psql-db
+  
+  db:
+    image: mongo
+    restart: always
+    volumes:
+      - db-v:/data/db
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: example
+
+  redis:
+    image: redis
+
+  nginx:
+    image: nginx
+    ports:
+     - "8080:80"
+    environment:
+     - NGINX_HOST=foobar.com
+     - NGINX_PORT=80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - s1
+
+  psql-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ahmed
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: djappdb
+    volumes:
+      - psql-v:/var/lib/postgresql/data
+
+
+volumes:
+  db-v:
+  psql-v:
+

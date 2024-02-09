@@ -1,0 +1,17 @@
+version: '2'
+services:
+  s1:
+    build:
+      context: .
+      # Define Dockerfile stages
+      target: production
+      # Define args to used in Dockerfile
+      args:
+        - DOCKERIZE_TYPE=production
+    environment: # OR 
+      - KEY1=VAL1
+      - KEY2=VAL2
+      - CASE=production
+    env_file:
+      - ./.env
+    command: python3 manage.py runserver 0.0.0.0:8000
