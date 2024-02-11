@@ -8,9 +8,9 @@ services:
       # Define args to used in Dockerfile
       args:
         - DOCKERIZE_TYPE=development
-    volumes:
+    # volumes:
 #      - ./users:/dj-app/users:ro
-      - ./templates:/dj-app/templates:ro
+      # - ./templates:/dj-app/templates:ro
     environment: # OR 
       - KEY=VAL from docker
       - KEY1=VAL1 from docker

@@ -2,7 +2,7 @@ version: '2'
 services:
   s1:
 #    To push on docker hub must initialize image arg
-    image: ahmedibrahim226/dj-app
+    image: ahmedibrahim226/dj-app:latest
     container_name: dj-app-container
     ports:
       - "80:80"

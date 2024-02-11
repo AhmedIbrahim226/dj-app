@@ -39,7 +39,7 @@ COPY . .
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:80"]
 
@@ -58,6 +58,6 @@ RUN pip install -r requirements.txt
 COPY . .
 
 
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:80"]
