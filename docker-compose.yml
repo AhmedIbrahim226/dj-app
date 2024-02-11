@@ -5,7 +5,7 @@ services:
     image: ahmedibrahim226/dj-app
     container_name: dj-app-container
     ports:
-      - "80:80"
+      - "8000:80"
 
   db:
     container_name: dj-app-db-container
