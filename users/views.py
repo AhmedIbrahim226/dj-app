@@ -25,7 +25,7 @@ def home_view(request):
 
 
 def profile_view(request):
-	return HttpResponse("<h1>Ahmed</h1><h2>Ibrahim</h2><h3>Hemid</h3>")
+	return HttpResponse("<h1>Ahmed</h1><h2>Ibrahim</h2><h3>Hemid2</h3>")
 	return HttpResponse("<h1>Ahmed</h1><h2>Ibrahim</h2><h3>Hemid</h3>")
 
 
