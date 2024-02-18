@@ -4,6 +4,8 @@ from decouple import config
 from utils.db import db
 import redis
 from .models import *
+import os
+
 
 def home_view(request):
 	rd = redis.Redis(
@@ -20,7 +22,10 @@ def home_view(request):
 	print(config('KEY2'))
 	categories = db(collection='category').get_collection.find()
 	print(f"\nFrom MONGO DB ==> \n {list(categories)}\n")
+
 	print(f"\nFrom POSTGRES DB ==> \n {Course.objects.all()}\n")
+
+	print("Traffic from container", os.uname().nodename)
 	return render(request, 'users/home.html', {})
 
 
